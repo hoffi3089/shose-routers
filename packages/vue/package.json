@@ -1,0 +1,55 @@
+{
+  "name": "remix-router-vue",
+  "version": "0.6.1",
+  "description": "A Vue UI layer for nested + data-driven routing via @remix-run/router",
+  "author": "matt@brophy.org",
+  "license": "MIT",
+  "main": "dist/remix-router-vue.umd.js",
+  "module": "dist/remix-router-vue.es.js",
+  "types": "dist/src/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/remix-router-vue.es.js",
+      "require": "./dist/remix-router-vue.umd.js"
+    }
+  },
+  "sideEffects": false,
+  "homepage": "https://github.com/brophdawg11/remix-routers#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brophdawg11/remix-routers.git",
+    "directory": "packages/vue"
+  },
+  "bugs": {
+    "url": "https://github.com/brophdawg11/remix-routers/issues"
+  },
+  "keywords": [
+    "remix",
+    "remix-run",
+    "router",
+    "vue"
+  ],
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build": "vite build && tsc -b",
+    "clean": "git clean -fX .",
+    "dev": "vite dev",
+    "integration:open": "cypress open --config-file ../../cypress.config.ts",
+    "integration:start": "vite dev --mode=production --port 3000",
+    "integration:test": "cypress run --config-file ../../cypress.config.ts",
+    "integration": "start-server-and-test integration:start http-get://localhost:3000/ integration:test",
+    "prepublishOnly": "rm -rf dist && npm run build"
+  },
+  "dependencies": {
+    "@remix-run/router": "0.2.0-pre.10"
+  },
+  "peerDependencies": {
+    "vue": ">=3.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "2.3.3",
+    "vue": "^3.2.41"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": { "project": ["./tsconfig.json"] },
+  "plugins": ["@typescript-eslint", "cypress"],
+  "extends": ["eslint:recommended"],
+  "env": {
+    "cypress/globals": true
+  },
+  "rules": {
+    "prefer-const": "off"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts"],
+      "plugins": ["@typescript-eslint"],
+      "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "prettier"
+      ],
+      "rules": {
+        "@typescript-eslint/no-unused-vars": "error",
+        "@typescript-eslint/unbound-method": "off",
+        "prefer-const": "off"
+      }
+    },
+    {
+      "files": ["cypress/**/*.js"],
+      "env": {
+        "node": true
+      }
+    }
+  ]
+}
